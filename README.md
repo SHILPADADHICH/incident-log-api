@@ -2,6 +2,29 @@
 
 A RESTful API service for logging and managing hypothetical AI safety incidents.
 
+## Links
+
+- **GitHub Repository**: [https://github.com/SHILPADADHICH/incident-log-api](https://github.com/SHILPADADHICH/incident-log-api)
+- **Hosted API**: [https://incident-log-api.onrender.com](https://incident-log-api.onrender.com)
+
+## Using the Hosted API
+
+You can use the hosted endpoint to test the API without setting up locally:
+
+```bash
+# Get all incidents
+curl https://incident-log-api.onrender.com/incidents
+
+# Create a new incident
+curl -X POST https://incident-log-api.onrender.com/incidents \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Test Incident",
+    "description": "This is a test incident",
+    "severity": "Medium"
+  }'
+```
+
 ## Technology Stack
 
 - **Language**: TypeScript
@@ -20,7 +43,7 @@ A RESTful API service for logging and managing hypothetical AI safety incidents.
 
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/SHILPADADHICH/incident-log-api
    cd incident-log-api
    ```
 
@@ -32,7 +55,7 @@ A RESTful API service for logging and managing hypothetical AI safety incidents.
 3. Environment Configuration:
    - Create a `.env` file in the root directory:
    ```
-   PORT=3000
+   PORT=8000
    MONGO_URI=mongodb://localhost:27017/incident-log
    ```
    - If using MongoDB Atlas, your connection string will look like:
@@ -44,7 +67,7 @@ A RESTful API service for logging and managing hypothetical AI safety incidents.
    ```
    npm run dev
    ```
-   The API will be available at `http://localhost:3000`
+   The API will be available at `http://localhost:8000`
 
 ## Database Setup
 
@@ -75,7 +98,7 @@ Send POST requests to `/incidents` with the following sample data:
 
 ```bash
 # Sample 1
-curl -X POST http://localhost:3000/incidents \
+curl -X POST http://localhost:8000/incidents \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Chatbot Bypassing Ethical Guidelines",
@@ -84,7 +107,7 @@ curl -X POST http://localhost:3000/incidents \
   }'
 
 # Sample 2
-curl -X POST http://localhost:3000/incidents \
+curl -X POST http://localhost:8000/incidents \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Biased Model Responses",
@@ -93,7 +116,7 @@ curl -X POST http://localhost:3000/incidents \
   }'
 
 # Sample 3
-curl -X POST http://localhost:3000/incidents \
+curl -X POST http://localhost:8000/incidents \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Privacy Data Leak",
@@ -113,7 +136,7 @@ Retrieves all incidents from the database.
 - **Response**: Array of incident objects
 - **Example**:
   ```bash
-  curl http://localhost:3000/incidents
+  curl http://localhost:8000/incidents
   ```
   ```json
   [
@@ -145,7 +168,7 @@ Creates a new incident in the database.
 - **Response**: The created incident object with ID and timestamp
 - **Example**:
   ```bash
-  curl -X POST http://localhost:3000/incidents \
+  curl -X POST http://localhost:8000/incidents \
     -H "Content-Type: application/json" \
     -d '{
       "title": "New AI Safety Incident",
@@ -172,7 +195,7 @@ Retrieves a specific incident by its ID.
 - **Response**: Incident object or 404 if not found
 - **Example**:
   ```bash
-  curl http://localhost:3000/incidents/60d21b4967d0d8992e610c85
+  curl http://localhost:8000/incidents/60d21b4967d0d8992e610c85
   ```
   ```json
   {
@@ -193,7 +216,7 @@ Deletes an incident with the specified ID.
 - **Response**: 204 No Content on success, 404 if not found
 - **Example**:
   ```bash
-  curl -X DELETE http://localhost:3000/incidents/60d21b4967d0d8992e610c85
+  curl -X DELETE http://localhost:8000/incidents/60d21b4967d0d8992e610c85
   ```
 
 ## Error Handling
